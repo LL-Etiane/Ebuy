@@ -1,0 +1,65 @@
+{% extends 'store/main.html' %} {% load static %} {% block content %}
+<div class="cart-upper shadow p-2 mt-2">
+  <a href="{%url 'store' %}" class="btn btn-outline-primary">
+    Continue Shopping
+  </a>
+  <div class="d-flex justify-content-between">
+    <h4>Items: <strong>{{order.get_cart_item}}</strong></h4>
+    <h4>Total: <strong>{{order.get_cart_total|floatformat:2}} fcfa</strong></h4>
+    <a href="{% url 'checkout' %}" class="btn btn-success">Checkout</a>
+  </div>
+</div>
+
+<div class="cart-down mt-2 shadow w-100">
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Items</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in items %}
+      <tr>
+        <td>
+          <img
+            src="{{item.product.imageUrl}}"
+            alt=""
+            class="img-fluid cart-product-img"
+          />
+        </td>
+        <td>{{item.product.name}}</td>
+        <td>{{item.product.price|floatformat:2}}</td>
+        <td>
+          {{item.quantity}}
+          <span
+            ><button
+              class="btn btn-outline-primary btn-sm"
+              data-product="{{item.product.id}}"
+              data-action="add"
+              @click="addCartItem"
+            >
+              add
+            </button></span
+          >
+          <span
+            ><button
+              class="btn btn-outline-primary btn-sm"
+              data-product="{{item.product.id}}"
+              data-action="minus"
+              @click="addCartItem"
+            >
+              reduce
+            </button></span
+          >
+        </td>
+        <td>{{item.get_total|floatformat:2}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

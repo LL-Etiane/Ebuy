@@ -1,0 +1,30 @@
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#card-number {
+  border: 1px solid #0a58ca;
+  border-radius: 50%;
+  padding: 2px;
+  text-align: center;
+  color: #fff;
+  float: right;
+}
+
+.product {
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.product-thumbnail {
+  height: 200px;
+}
+
+.product-details {
+  padding: 4px;
+}
+
+.cart-product-img {
+  width: 200px;
+  height: 70px;
+}
